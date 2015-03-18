@@ -11,7 +11,7 @@ add_filter( 'ot_theme_mode', '__return_true' );
  * Required: include OptionTree.
  */
 require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
-include_once('panel/theme-options.php');
+// include_once('panel/theme-options.php');
 
 if ( ! function_exists( 'npktheme_setup' ) ) :
 
