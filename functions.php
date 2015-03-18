@@ -2,9 +2,17 @@
 $siteurl = get_option('siteurl');
 $themeurl = $siteurl.'/wp-content/themes/'.get_option('template');
 
-if ( version_compare( $GLOBALS['wp_version'], '4.1-alpha', '<' ) ) {
-	require get_template_directory() . '/inc/back-compat.php';
-}
+/**
+ * Required: set 'ot_theme_mode' filter to true.
+ */
+add_filter( 'ot_theme_mode', '__return_true' );
+
+/**
+ * Required: include OptionTree.
+ */
+require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
+include_once('panel/theme-options.php');
+
 if ( ! function_exists( 'npktheme_setup' ) ) :
 
 	//adding css
@@ -156,7 +164,7 @@ function npktheme_customizer_register($wp_customize){
 		'description' => 'Modify the logos'
 	));
 	$wp_customize->add_setting('logo_image', array(
-		'default' => get_template_directory_uri().'/img/logos.png',
+		'default' => 'http://localhost/wp-content/themes/npktheme/img/logos.png',
 	));
 	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'logo_image', array(
 		'label' => __('Edit logo image', 'npktheme'),
@@ -172,10 +180,24 @@ function npktheme_customizer_register($wp_customize){
 	$wp_customize->add_setting('copyright_details', array(
 		'default' => '&copy Copyrights 2015 <a target="_blank" href="#">PT. Ghaly Roelies Indonesia</a> Allright reserved',
 	));
-	$wp_customize->add_control($wp_customize,'copyright_details', array(
+	$wp_customize->add_control('copyright_details', array(
 		'label' => __('Copyright Information', 'npktheme'),
 		'section' => 'npktheme_copyright',
 		'settings' => 'copyright_details'
+	));
+
+	//change header text
+	$wp_customize->add_section('npktheme_headertext',array(
+		'title' => __('Header Details','npktheme'),
+		'description' => 'Modify the header text'
+	));
+	$wp_customize->add_setting('header_details', array(
+		'default' => '+6221 - 96213123',
+	));
+	$wp_customize->add_control('header_details', array(
+		'label' => __('Header Information', 'npktheme'),
+		'section' => 'npktheme_headertext',
+		'settings' => 'header_details'
 	));
 
 }

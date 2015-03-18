@@ -16,8 +16,9 @@
 <body <?php body_class(); ?>>
 	<header>
 		<div class="top-head">
-			<div class="container" style="display:inline-block !important">
-				<?php dynamic_sidebar('header-top'); ?>
+			<div class="container" style="text-align:right;">
+                <?php echo get_theme_mod('header_details') ?>
+				<!--<?php dynamic_sidebar('header-top'); ?>-->
 			</div>
 		</div>
 		<div class="navigation">      
