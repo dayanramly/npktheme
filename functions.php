@@ -11,7 +11,7 @@ add_filter( 'ot_theme_mode', '__return_true' );
  * Required: include OptionTree.
  */
 require( trailingslashit( get_template_directory() ) . 'admin/ot-loader.php' );
-// include_once('panel/theme-options.php');
+include_once('panel/theme-options.php');
 
 if ( ! function_exists( 'npktheme_setup' ) ) :
 
@@ -109,24 +109,24 @@ function npktheme_widgets_init() {
 			'before_title'  => '<h3>',
 			'after_title'   => '</h3>',
 			));
-		register_sidebar( array(
-			'name'          => __( 'Widget Home Comment', 'npktheme' ),
-			'id'            => 'sidebar-5',
-			'description'   => __( 'Add widgets here to appear in your sidebar.', 'npktheme' ),
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-			));
-		register_sidebar( array(
-			'name'          => __( 'Widget Header Top', 'npktheme' ),
-			'id'            => 'header-top',
-			'description'   => __( 'Add widgets here to appear in your sidebar.', 'npktheme' ),
-			'before_widget' => '<aside id="%1$s" style="display:inline-block">',
-			'after_widget'  => '</aside>',
-			'before_title'  => '',
-			'after_title'   => '',
-			));
+		// register_sidebar( array(
+		// 	'name'          => __( 'Widget Home Comment', 'npktheme' ),
+		// 	'id'            => 'sidebar-5',
+		// 	'description'   => __( 'Add widgets here to appear in your sidebar.', 'npktheme' ),
+		// 	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		// 	'after_widget'  => '</aside>',
+		// 	'before_title'  => '<h2 class="widget-title">',
+		// 	'after_title'   => '</h2>',
+		// 	));
+		// register_sidebar( array(
+		// 	'name'          => __( 'Widget Header Top', 'npktheme' ),
+		// 	'id'            => 'header-top',
+		// 	'description'   => __( 'Add widgets here to appear in your sidebar.', 'npktheme' ),
+		// 	'before_widget' => '<aside id="%1$s" style="display:inline-block">',
+		// 	'after_widget'  => '</aside>',
+		// 	'before_title'  => '',
+		// 	'after_title'   => '',
+		// 	));
 
 	}
 }
@@ -157,52 +157,52 @@ function custom_theme_features()  {
 	add_theme_support( 'post-thumbnails' );
 }
 
-function npktheme_customizer_register($wp_customize){
-	//change logo
-	$wp_customize->add_section('npktheme_images',array(
-		'title' => __('Logo','npktheme'),
-		'description' => 'Modify the logos'
-	));
-	$wp_customize->add_setting('logo_image', array(
-		'default' => 'http://localhost/wp-content/themes/npktheme/img/logos.png',
-	));
-	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'logo_image', array(
-		'label' => __('Edit logo image', 'npktheme'),
-		'section' => 'npktheme_images',
-		'settings' => 'logo_image'
-	)));
+// function npktheme_customizer_register($wp_customize){
+// 	//change logo
+// 	$wp_customize->add_section('npktheme_images',array(
+// 		'title' => __('Logo','npktheme'),
+// 		'description' => 'Modify the logos'
+// 	));
+// 	$wp_customize->add_setting('logo_image', array(
+// 		'default' => 'http://localhost/wp-content/themes/npktheme/img/logos.png',
+// 	));
+// 	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'logo_image', array(
+// 		'label' => __('Edit logo image', 'npktheme'),
+// 		'section' => 'npktheme_images',
+// 		'settings' => 'logo_image'
+// 	)));
 
-	//change copyright
-	$wp_customize->add_section('npktheme_copyright',array(
-		'title' => __('Copyright Details','npktheme'),
-		'description' => 'Modify the copyright'
-	));
-	$wp_customize->add_setting('copyright_details', array(
-		'default' => '&copy Copyrights 2015 <a target="_blank" href="#">PT. Ghaly Roelies Indonesia</a> Allright reserved',
-	));
-	$wp_customize->add_control('copyright_details', array(
-		'label' => __('Copyright Information', 'npktheme'),
-		'section' => 'npktheme_copyright',
-		'settings' => 'copyright_details'
-	));
+// 	//change copyright
+// 	$wp_customize->add_section('npktheme_copyright',array(
+// 		'title' => __('Copyright Details','npktheme'),
+// 		'description' => 'Modify the copyright'
+// 	));
+// 	$wp_customize->add_setting('copyright_details', array(
+// 		'default' => '&copy Copyrights 2015 <a target="_blank" href="#">PT. Ghaly Roelies Indonesia</a> Allright reserved',
+// 	));
+// 	$wp_customize->add_control('copyright_details', array(
+// 		'label' => __('Copyright Information', 'npktheme'),
+// 		'section' => 'npktheme_copyright',
+// 		'settings' => 'copyright_details'
+// 	));
 
-	//change header text
-	$wp_customize->add_section('npktheme_headertext',array(
-		'title' => __('Header Details','npktheme'),
-		'description' => 'Modify the header text'
-	));
-	$wp_customize->add_setting('header_details', array(
-		'default' => '+6221 - 96213123',
-	));
-	$wp_customize->add_control('header_details', array(
-		'label' => __('Header Information', 'npktheme'),
-		'section' => 'npktheme_headertext',
-		'settings' => 'header_details'
-	));
+// 	//change header text
+// 	$wp_customize->add_section('npktheme_headertext',array(
+// 		'title' => __('Header Details','npktheme'),
+// 		'description' => 'Modify the header text'
+// 	));
+// 	$wp_customize->add_setting('header_details', array(
+// 		'default' => '+6221 - 96213123',
+// 	));
+// 	$wp_customize->add_control('header_details', array(
+// 		'label' => __('Header Information', 'npktheme'),
+// 		'section' => 'npktheme_headertext',
+// 		'settings' => 'header_details'
+// 	));
 
-}
+// }
 
-add_action('customize_register', 'npktheme_customizer_register' );
+// add_action('customize_register', 'npktheme_customizer_register' );
 
 // Hook into the 'after_setup_theme' action
 add_action( 'after_setup_theme', 'custom_theme_features' );

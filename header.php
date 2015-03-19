@@ -17,7 +17,8 @@
 	<header>
 		<div class="top-head">
 			<div class="container" style="text-align:right;">
-                <?php echo get_theme_mod('header_details') ?>
+                <?php echo get_option_tree('header_text') ?>
+                <!--<?php echo get_theme_mod('header_details') ?>-->
 				<!--<?php dynamic_sidebar('header-top'); ?>-->
 			</div>
 		</div>
@@ -25,7 +26,7 @@
 			<div class="container">
 				<div class="logo">          
 					<a href="<?php bloginfo('url')?>">
-						<img class="media-object" src="<?php echo get_theme_mod('logo_image') ?>" height="50px" alt="" >
+						<img class="media-object" src="<?php echo get_option_tree('change_logo') ?>" height="50px" alt="" >
 					</a>
 				</div>
 				<ul id="nav">

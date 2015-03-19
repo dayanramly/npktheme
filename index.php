@@ -21,20 +21,31 @@ get_header(); ?>
 					
           <?php dynamic_sidebar('sidebar-1'); ?>
 
-				</div> <!-- end of home-slider -->
-			</div> <!-- end of col-xs-12 -->
+        </div> <!-- end of home-slider -->
+      </div> <!-- end of col-xs-12 -->
 
       <div class="col-xs-12"> <!-- Sambutan -->
         <div class="box">
           <div class="head-box">
-            <h1>Pupuk <span class="green">Ghaly Organik</span></h1>
+            <h1><?php echo get_option_tree('white_text_title'); ?></h1>
+            <!-- <h1>Pupuk <span class="green">Ghaly Organik</span></h1> -->
             <hr class="head-box-line">
           </div>
 
           <div class="box-body"> <!-- box-body -->
-            <div class="row">
+            <div class="row"> 
 
-            <?php dynamic_sidebar('sidebar-5');?>
+              <div class="col-xs-7">
+                <div class="sambutan">
+                  <?php echo get_option_tree('white_text_left'); ?>
+                </div>
+              </div>
+
+              <div class="col-xs-5">
+                <div class="about green-bg-2">
+                  <?php echo get_option_tree('white_text_right'); ?>
+                </div>
+              </div> 
 
             </div>
           </div> <!-- end of box-body -->
@@ -42,10 +53,36 @@ get_header(); ?>
         </div>              
       </div> <!-- end of sambutan  -->
 
+
+
       <div class="col-xs-12"> <!-- widget green -->
         <div class="box green-bg-2">
           <div class="box-body">
-            <?php dynamic_sidebar('sidebar-2'); ?>
+            
+              <?php 
+
+                $list_item=ot_get_option('green_box', array());
+
+                if(!empty($list_item)){
+                  echo'<div class="row">';
+                    foreach ($list_item as $green_image) {
+
+                        echo'<div class="col-xs-4">
+                        <a class="popup-video" href="'.$green_image['green_box_link'].'">
+                          <div class="home-vid-thumb">
+                            <img class="img-responsive" src="'.$green_image['green_box_image'].'" alt="'.$green_image['title'].'">
+                          </div>
+                          <div class="home-vid-title">
+                            <h3>'.$green_image['green_box_desc'].'</h3>
+                          </div>
+                        </a>
+                      </div>';
+
+                    }
+                  echo'</div>';
+                }
+
+              ?>
 
           </div>
         </div>
@@ -54,7 +91,8 @@ get_header(); ?>
       <div class="col-xs-12"> <!-- berita terbaru -->
         <div class="box">
           <div class="head-box">
-            <h1>Berita <span class="green">Terbaru</span></h1>
+            <h1><?php echo get_option_tree('new_post_title'); ?></h1>
+            <!-- <h1>Berita <span class="green">Terbaru</span></h1> -->
             <hr class="head-box-line">
           </div>
 
